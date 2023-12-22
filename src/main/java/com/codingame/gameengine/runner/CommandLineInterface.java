@@ -27,6 +27,8 @@ public class CommandLineInterface {
                     .addOption("p3", true, "Player 3 command line.")
                     .addOption("p4", true, "Player 4 command line.")
                     .addOption("s", false, "Server mode")
+                    .addOption("league", true, "League level")
+                    .addOption("seed", true, "Seed")
                     .addOption("l", true, "File output for logs")
                     .addOption("d", false, "Referee initial data");
 
@@ -40,6 +42,17 @@ public class CommandLineInterface {
             }
 
             MultiplayerGameRunner runner = new MultiplayerGameRunner();
+            runner.setLeagueLevel(4);
+
+            if (cmd.hasOption("seed")) {
+                runner.setSeed(Long.valueOf(cmd.getOptionValue("seed")));
+            }
+
+            if (cmd.hasOption("league")) {
+                runner.setLeagueLevel(Integer.valueOf(cmd.getOptionValue("league")));
+            } else {
+                runner.setLeagueLevel(4);
+            }
 
             Field getGameResult = GameRunner.class.getDeclaredField("gameResult");
             getGameResult.setAccessible(true);

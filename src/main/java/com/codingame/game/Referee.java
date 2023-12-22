@@ -18,7 +18,6 @@ public class Referee extends AbstractReferee {
         try {
 
             int leagueLevel = gameManager.getLeagueLevel();
-            leagueLevel = 4;
             if (leagueLevel == 1) {
                 Game.ENABLE_UGLIES = false;
                 Game.FISH_WILL_FLEE = false;
